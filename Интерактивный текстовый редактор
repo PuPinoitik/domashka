@@ -1,0 +1,71 @@
+x = str(input('Введите название файла ',))
+print('append str - добавляет новую строку с введенными данными')
+print('append - добавляет данные в конец последней строки')
+print('read - читает строки от первого до второго введенного значения')
+print('count - считает кол-во строк в файле')
+print('remove - удаляет все строки с первого по второе введенное значение (включительно)')
+print('append str - добавляет новую строку с введенными данными')
+print('assign - поиск введенного значение и замена на второе введенное значение')
+print('remove+add - удаление всех данных в файле и добавление введенного значения')
+print('replace - замена выбранной строки на введенное значение')
+print('exit - конец программы')
+while True:
+    a=str(input('Введите операцию, которую хотите выполнить '))
+    if a=='append str':
+        with open(x,'a') as f:
+            f.write('\n'+str(input('Введите значение, которое хотите добавить ')))
+            f.close()
+    if a=='append':
+        with open(x,'a') as f:
+            f.writelines(str(input('Введите значение, которое хотите добавить ')))
+            f.close()
+    elif a=='read':
+        with open(x) as f:
+            fs=f.readlines()
+            k=str(input('Введите нижнюю границу '))
+            l=str(input('Введите верхнюю границу '))
+            for i in range(int(k)-1,int(l)):
+                print(fs[i])
+    elif a=='count':
+        with open(x) as f:
+            fs=f.readlines()
+            print(len(fs))
+    elif a=='remove':
+        p=int(input('Введите нижнюю границу '))
+        o=int(input('Введите верхнюю границу '))
+        f = open(x).readlines()
+        i=p-1
+        while o>=p:
+            f.pop(i)
+            o=o-1
+        with open(x, 'w') as F:
+            F.writelines(f)
+            F.close()
+    elif a=='exit':
+        break
+    elif a=='assign':
+        with open(x, 'r') as f:
+            old_data = f.read()
+        q=str(input('Введите значение, которое хотите заменить '))
+        w=str(input('Введите значение, на которое хотите заменить '))
+        new_data = old_data.replace(q,w)
+        with open(x, 'w') as f:
+            f.write(new_data)
+    elif a=='remove+add':
+        with open(x,'r') as F:
+            lines =F.readlines()
+        with open(x, "w") as f:
+            h=int(input('Введите значение, которое хотите вставить '))
+            f.write(str(h)+ '\n')
+    elif a=='replace':
+        with open(x,'r') as f:
+            F=f.readlines()
+        with open(x, "w") as f:
+            f.write(str()+ '\n')
+            h = int(input('Введите номер строки, которую хотите заменить '))
+            j=str(input('Введите текст, на который хотите заменить '))
+            F[h-1]=j
+            for i in range(0,len(F)):
+                f.write(F[i])
+
+
